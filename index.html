@@ -3,95 +3,354 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran Program SMP - Bimbel Brillieant</title>
+    <title>Bimbel Brillieant - Raih Prestasi Cemerlang!</title>
     <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f0f4f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        html {
+            scroll-behavior: smooth;
+        }
+        * {
             margin: 0;
-            padding: 20px;
-        }
-        .form-box {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 450px;
-            text-align: center;
-            border-top: 6px solid #ffd700;
-        }
-        h2 { color: #0b3c5d; margin-bottom: 10px; }
-        p { color: #666; font-size: 14px; margin-bottom: 30px; }
-        .form-group { text-align: left; margin-bottom: 20px; }
-        label { display: block; font-weight: bold; margin-bottom: 8px; color: #1d2731; }
-        input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 16px;
+            padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .btn-submit {
-            background-color: #0b3c5d;
-            color: #ffffff;
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 30px;
-            font-size: 16px;
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        :root {
+            --primary-color: #0b3c5d;
+            --secondary-color: #ffd700;
+            --accent-color: #328cc1;
+            --dark-color: #1d2731;
+            --light-color: #ffffff;
+        }
+        header {
+            background-color: var(--primary-color);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo {
+            color: var(--light-color);
+            font-size: 24px;
             font-weight: bold;
-            cursor: pointer;
+            letter-spacing: 1px;
+        }
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .admin-btn {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 8px 18px;
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+        .admin-btn:hover {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        .hero {
+            background: linear-gradient(rgba(11, 60, 93, 0.85), rgba(29, 39, 49, 0.85)), url('https://unsplash.com') no-repeat center center/cover;
+            color: var(--light-color);
+            padding: 100px 5%;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        .hero h1 span {
+            color: var(--secondary-color);
+        }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-btn {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 15px 40px;
+            font-size: 18px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: 0.3s transform, 0.3s box-shadow;
+            display: inline-block;
+        }
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        }
+        .features {
+            padding: 80px 5%;
+            text-align: center;
+        }
+        .section-title {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background-color: var(--light-color);
+            padding: 40px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .programs {
+            background-color: #f0f4f8;
+            padding: 80px 5%;
+            text-align: center;
+        }
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .program-card {
+            background-color: var(--light-color);
+            border-top: 5px solid var(--accent-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+        .program-card.popular {
+            border-top-color: var(--secondary-color);
+            position: relative;
+        }
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .program-card h3 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .program-card ul {
+            list-style: none;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .program-card ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .program-card ul li::before {
+            content: '✓';
+            color: #2ec4b6;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .card-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 8px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 20px;
+            font-size: 14px;
             transition: 0.3s;
             margin-top: 10px;
         }
-        .btn-submit:hover { background-color: #ffd700; color: #1d2731; }
-        .back-link { display: inline-block; margin-top: 20px; color: #328cc1; text-decoration: none; font-size: 14px; }
+        .card-btn:hover {
+            background-color: var(--accent-color);
+        }
+        .program-card.popular .card-btn {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+        }
+        .program-card.popular .card-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+        footer {
+            background-color: var(--dark-color);
+            color: #a0a0a0;
+            padding: 40px 5%;
+            text-align: center;
+            font-size: 14px;
+        }
+        .steps-banner {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 60px 5%;
+            text-align: center;
+        }
+        .steps-banner h2 {
+            font-size: 30px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            max-width: 950px;
+            margin: 0 auto 40px;
+        }
+        .step-item {
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 30px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+        .step-item:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .step-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        .step-item p {
+            font-size: 15px;
+            color: #e2e8f0;
+            line-height: 1.5;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 16px; }
+            header { padding: 15px 5%; }
+            .logo { font-size: 20px; }
+        }
     </style>
 </head>
 <body>
-
-    <div class="form-box">
-        <h2>Formulir Kelas SMP</h2>
-        <p>Bimbel Brillieant Jembrana (Kelas 7 - 9)</p>
-        
-        <div class="form-group">
-            <label for="namaSMP">Nama Lengkap Siswa:</label>
-            <input type="text" id="namaSMP" placeholder="Contoh: Budi Santoso">
+    <header>
+        <div class="logo">Bimbel<span>BrilLieant</span></div> 
+        <a href="https://wa.me/6281246436630" class="admin-btn" target="_blank">Hubungi Admin</a>
+    </header>
+    <section class="hero">
+        <h1>Masa Depan <span>Cemerlang</span> Dimulai dari Sini!</h1>
+        <p>Bimbel BrilLieant membantu siswa menguasai materi sekolah, siap menghadapi ujian nasional, hingga materi lomba dengan metode belajar yang menyenangkan.</p>
+        <a href="#program-section" class="cta-btn">Daftar Sekarang</a>
+    </section>
+    <section class="steps-banner">
+        <h2>3 Langkah Mudah Bergabung</h2>
+        <div class="steps-grid">
+            <div class="step-item">
+                <div class="step-number">01</div>
+                <p>Klik tombol pilihan program di bawah untuk masuk ke formulir kelas.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">02</div>
+                <p>Isi data nama dan umur siswa dengan lengkap.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">03</div>
+                <p>Kirim data untuk langsung terhubung otomatis ke WhatsApp Admin!</p>
+            </div>
         </div>
-        
-        <div class="form-group">
-            <label for="umurSMP">Umur Siswa (Tahun):</label>
-            <input type="number" id="umurSMP" placeholder="Contoh: 13">
+        <a href="#program-section" class="cta-btn">Pilih Program & Daftar Sekarang</a>
+    </section>
+    <section class="features">
+        <h2 class="section-title">Mengapa Memilih BrilLieant?</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">👩‍🏫</div>
+                <h3>Guru Professional</h3>
+                <p>Diajar langsung oleh guru yang ahli di berbagai bidang dan ramah anak.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>Modul Belajar Eksklusif</h3>
+                <p>Materi yang disusun ringkas, sistematis, serta menggunakan rumus cepat yang mudah dipahami.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3>Seru & Menyenangkan</h3>
+                <p>Bimbel Brillieant juga memiliki metode belajar yang interaktif dan menyenangkan.</p>
+            </div>
         </div>
-        
-        <button class="btn-submit" onclick="kirimWaSMP()">Kirim Data via WhatsApp</button>
-        <a href="../index.html" class="back-link">← Kembali ke Halaman Utama</a>
-    </div>
-
-    <script>
-        function kirimWaSMP() {
-            var nama = document.getElementById('namaSMP').value;
-            var umur = document.getElementById('umurSMP').value;
-
-            if (nama.trim() === "" || umur.trim() === "") {
-                alert("Mohon isi semua kolom terlebih dahulu!");
-                return;
-            }
-
-            var nomorWA = "6281246436630";
-            var pesan = "Halo Bimbel Brillieant, saya mau daftar program kelompok SMP.%0A%0A" +
-                        "*Nama:* " + encodeURIComponent(nama) + "%0A" +
-                        "*Umur:* " + encodeURIComponent(umur) + " Tahun";
-            
-            window.open("https://wa.me/" + nomorWA + "?text=" + pesan, '_blank');
-        }
-    </script>
-
+    </section>
+    <section class="programs" id="program-section">
+        <h2 class="section-title">Pilihan Program Terbaik</h2>
+        <div class="program-grid">
+            <div class="program-card popular">
+                <div class="badge">Terfavorit</div>
+                <h3>SD (Kelas 1 - 6)</h3>
+                <ul>
+                    <li>Fokus materi dasar bidang yang dipelajari</li>
+                    <li>Pendampingan PR sekolah</li>
+                    <li>Persiapan Asesmen Tengah/Akhir Semester</li>
+                </ul>
+                <p style="font-weight: bold; color: var(--primary-color); margin-bottom: 5px;">Mulai Rp50.000,00 per 1,5 jam les</p>
+                <a href="daftar-sd.html" class="card-btn" >Pilih Program SD</a>
+            </div>
+            <div class="program-card">
+                <h3>SMP (Kelas 7 - 9)</h3>
+                <ul>
+                    <li>Persiapan TKA</li>
+                    <li>Bedah soal literasi dan numerasi</li>
+                    <li>Pembahasan PR sekolah yang menyenangkan</li>
+                </ul>
+                <p style="font-weight: bold; color: var(--primary-color); margin-bottom: 5px;">Mulai Rp50.000,00 per 1,5 jam les</p>
+                <a href="daftar-smp.html" class="card-btn" >Pilih Program SMP</a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2026 Bimbel Brillieant. All Rights Reserved.</p>
+        <p>Jl. Ngurah Rai No. 139b, Jembrana, Bali | WA: 0812-4643-6630</p>
+    </footer>
 </body>
 </html>

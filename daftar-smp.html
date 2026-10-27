@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Program SMP - Bimbel Brillieant</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .form-box {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            border-top: 6px solid #ffd700;
+        }
+        h2 { color: #0b3c5d; margin-bottom: 10px; }
+        p { color: #666; font-size: 14px; margin-bottom: 30px; }
+        .form-group { text-align: left; margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; color: #1d2731; }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .btn-submit {
+            background-color: #0b3c5d;
+            color: #ffffff;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        .btn-submit:hover { background-color: #ffd700; color: #1d2731; }
+        .back-link { display: inline-block; margin-top: 20px; color: #328cc1; text-decoration: none; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <div class="form-box">
+        <h2>Formulir Kelas SMP</h2>
+        <p>Bimbel Brillieant Jembrana (Kelas 7 - 9)</p>
+        
+        <div class="form-group">
+            <label for="namaSMP">Nama Lengkap Siswa:</label>
+            <input type="text" id="namaSMP" placeholder="Contoh: Budi Santoso">
+        </div>
+        
+        <div class="form-group">
+            <label for="umurSMP">Umur Siswa (Tahun):</label>
+            <input type="number" id="umurSMP" placeholder="Contoh: 13">
+        </div>
+        
+        <button class="btn-submit" onclick="kirimWaSMP()">Kirim Data via WhatsApp</button>
+        <a href="index.html" class="back-link">← Kembali ke Halaman Utama</a>
+    </div>
+
+    <script>
+        function kirimWaSMP() {
+            var nama = document.getElementById('namaSMP').value;
+            var umur = document.getElementById('umurSMP').value;
+
+            if (nama.trim() === "" || umur.trim() === "") {
+                alert("Mohon isi semua kolom terlebih dahulu!");
+                return;
+            }
+
+            var nomorWA = "6281246436630";
+            var pesan = "Halo Bimbel Brillieant, saya mau daftar program kelompok SMP.%0A%0A" +
+                        "*Nama:* " + encodeURIComponent(nama) + "%0A" +
+                        "*Umur:* " + encodeURIComponent(umur) + " Tahun";
+            
+            window.open("https://wa.me/" + nomorWA + "?text=" + pesan, '_blank');
+        }
+    </script>
+
+</body>
+</html>
